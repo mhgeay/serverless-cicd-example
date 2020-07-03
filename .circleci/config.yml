@@ -19,4 +19,4 @@ jobs:
           name: Deploy with SAM
           # Be sure to replace the S3 bucket name ('serverless-cicd-example') with the unique name of the bucket you created
           # In parameter-overrides, we reference the phone number environment variable you stored in CircleCI using '$'
-          command: sam deploy --s3-bucket test-mhg-circleci --stack-name example-cicd-project --region eu-west-3 --capabilities CAPABILITY_IAM --parameter-overrides MyPhoneNumber=$MY_MAIL
+          command: sam deploy --s3-bucket test-mhg-circleci --stack-name example-cicd-project --region eu-west-3 --capabilities CAPABILITY_IAM --parameter-overrides MyMail=$MY_MAIL
