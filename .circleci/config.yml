@@ -1,22 +1,21 @@
-version: 2
-jobs:
-  build:
-    docker:
-      - image: circleci/python:3
+version: 2.1
 
+orbs:
+  python: circleci/python@0.2.1
+
+jobs:
+  build-and-test:
+    executor: python/default
     steps:
       - checkout
-
+      - python/load-cache
+      - python/install-deps
+      - python/save-cache
       - run:
-          name: Install awscli
-          command: sudo pip install awscli
-      
-      - run:
-          name: Install SAM
-          command: sudo pip install aws-sam-cli
+          command: ./manage.py test
+          name: Test
 
-      - run: 
-          name: Deploy with SAM
-          # Be sure to replace the S3 bucket name ('serverless-cicd-example') with the unique name of the bucket you created
-          # In parameter-overrides, we reference the phone number environment variable you stored in CircleCI using '$'
-          command: sam deploy --s3-bucket serverless-cicd-example --stack-name example-cicd-project --region us-east-1 --capabilities CAPABILITY_IAM --parameter-overrides MyPhoneNumber=$MY_PHONE_NUMBER
+workflows:
+  main:
+    jobs:
+      - build-and-test
