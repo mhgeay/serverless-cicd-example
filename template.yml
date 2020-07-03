@@ -24,7 +24,7 @@ Resources:
       Environment:
         Variables:
           # If your functions need to use variables passed as parameters, reference them as environment variables
-          MY_PHONE_NUMBER: !Ref MyPhoneNumber
+          MY_MAIL: !Ref MyEmail
           # You can also reference other resources created in this template as environment variables
           SNS_TOPIC_ARN: !Ref CICDSendTextSNSTopic
 
@@ -34,5 +34,5 @@ Resources:
     Properties:
       # Subscribing yourself to receive messages from this topic
       Subscription:
-      - Protocol: sms
-        Endpoint: !Ref MyPhoneNumber
+      - Protocol: email
+        Endpoint: !Ref MyEmail

@@ -8,9 +8,9 @@ def lambda_handler(event, context):
 
   text_message = "Congrats! You deployed this application using a CI/CD pipeline."
 
-  phone_number = os.environ['MY_PHONE_NUMBER']
+  phone_number = os.environ['MY_EMAIL']
 
-  print(f"Publishing message to SNS topic. Subscriber phone number ends in {phone_number[-4:]}")
+  print(f"Publishing message to SNS topic. Subscriber email: {phone_number}")
   
   try:
     publish_sns_update(text_message)
