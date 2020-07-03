@@ -3,7 +3,7 @@ Transform: 'AWS::Serverless-2016-10-31'
 Description: An example app with a Lambda function that sends texts via SNS.
 Parameters:
   # Pass secrets that you don't want stored in your code repository as parameters
-  MyPhoneNumber:
+  MyMail:
     Type: String
 
 Resources:
