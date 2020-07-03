@@ -24,7 +24,7 @@ Resources:
       Environment:
         Variables:
           # If your functions need to use variables passed as parameters, reference them as environment variables
-          MY_MAIL: !Ref MyEmail
+          MY_EMAIL: !Ref MyEmail
           # You can also reference other resources created in this template as environment variables
           SNS_TOPIC_ARN: !Ref CICDSendTextSNSTopic
 
